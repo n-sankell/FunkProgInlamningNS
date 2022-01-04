@@ -69,9 +69,9 @@ public class RewriteMe {
     //Skapa en funktion som hittar det svarsalternativ som har flest bokstäver, i en kategori, given som inparameter
     // OBS: Du måste använda Reduce!
     public String getLongestLettercountAnwerInAGivenCategory(Category c){
-        return "hhhhh";
+        return questions.stream().filter(category -> category.getCategory() == c).flatMap(e -> e.getAllAnswers().stream()).
+                reduce((s1,s2) -> (s1.length() > s2.length()) ? s1 : s2).orElse("");
     }
-
 
     public static void main(String[] args){
         RewriteMe uppg4 = new RewriteMe();
