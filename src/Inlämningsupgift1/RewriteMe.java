@@ -41,7 +41,7 @@ public class RewriteMe {
     //Skapa en lista innehållandes samtliga frågesträngar där frågan tillhör en viss kategori
     //Kategorin ges som inparameter
     public List<String> getAllQuestionStringsBelongingACategory(Category category){
-        return questions.stream().filter(e -> e.getCategory() == category).map(Question::getQuestionString).toList();
+        return questions.stream().filter(e -> e.getCategory().equals(category)).map(Question::getQuestionString).toList();
     }
 
     //Skapa en lista av alla svarsalternativ, där varje svarsalternativ får förekomma
@@ -69,7 +69,7 @@ public class RewriteMe {
     //Skapa en funktion som hittar det svarsalternativ som har flest bokstäver, i en kategori, given som inparameter
     // OBS: Du måste använda Reduce!
     public String getLongestLettercountAnwerInAGivenCategory(Category c){
-        return "fafaf";
+        return "hhhhh";
     }
 
 
