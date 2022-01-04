@@ -35,19 +35,19 @@ public class RewriteMe {
 
     //Skapa en lista innehållandes samtliga frågesträngar i databasen
     public List<String> getListOfAllQuestions() {
-        return questions.stream().map(Question::getQuestionString).collect(Collectors.toList());
+        return questions.stream().map(Question::getQuestionString).toList();
     }
 
     //Skapa en lista innehållandes samtliga frågesträngar där frågan tillhör en viss kategori
     //Kategorin ges som inparameter
     public List<String> getAllQuestionStringsBelongingACategory(Category category){
-        return questions.stream().filter(e -> e.getCategory() == category).map(Question::getQuestionString).collect(Collectors.toList());
+        return questions.stream().filter(e -> e.getCategory() == category).map(Question::getQuestionString).toList();
     }
 
     //Skapa en lista av alla svarsalternativ, där varje svarsalternativ får förekomma
     // en och endast en gång i den lista som du ska returnera
     public List<String> getAllAnswerOptionsDistinct(){
-        return questions.stream().flatMap(e -> e.getAllAnswers().stream()).collect(Collectors.toList()).stream().distinct().collect(Collectors.toList());
+        return questions.stream().flatMap(e -> e.getAllAnswers().stream()).toList().stream().distinct().toList();
     }
 
     //Finns en viss sträng, given som inparameter, som svarsalternativ till någon fråga i vår databas?
