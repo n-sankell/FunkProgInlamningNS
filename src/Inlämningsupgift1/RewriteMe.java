@@ -47,7 +47,7 @@ public class RewriteMe {
     //Skapa en lista av alla svarsalternativ, där varje svarsalternativ får förekomma
     // en och endast en gång i den lista som du ska returnera
     public List<String> getAllAnswerOptionsDistinct(){
-        return questions.stream().flatMap(e -> e.getAllAnswers().stream()).toList().stream().distinct().toList();
+        return questions.stream().flatMap(e -> e.getAllAnswers().stream()).distinct().toList();
     }
 
     //Finns en viss sträng, given som inparameter, som svarsalternativ till någon fråga i vår databas?
