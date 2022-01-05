@@ -63,7 +63,9 @@ public class RewriteMe {
     //Skapa en Map där kategorierna är nycklar och värdena är en lista
     //av de frågesträngar som tillhör varje kategori
     public Map<Category, List<String>> getQuestionGroupedByCategory(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return questions.stream().collect(Collectors.groupingBy(Question::getCategory))
+                .entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e
+                        .getValue().stream().map(Question::getQuestionString).toList()));
     }
 
     //Skapa en funktion som hittar det svarsalternativ som har flest bokstäver, i en kategori, given som inparameter
