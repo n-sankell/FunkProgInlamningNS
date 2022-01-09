@@ -25,8 +25,9 @@ public class RewriteMe {
 
     //Skriv en funktioner som returnerar hur många frågor det finns i databasen?
     public int getAmountOfQuestionsInDatabase(){
-        return (int) questions.stream().map(Question::getQuestionString).count();
-        //return questions.size();
+        //return (int) questions.stream().map(Question::getQuestionString).count();
+        //return questions.stream().map(Question::getQuestionString).toList().size();
+        return questions.size();
     }
 
     //Hur många frågor finns i databasen för en viss, given kategori (som ges som inparameter)
