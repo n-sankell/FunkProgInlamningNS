@@ -59,11 +59,8 @@ class Tomteland {
     fun getUnderlings(currentName: String, res: MutableList<String>): MutableList<String> {
         fun addUnderlingsToList(listToAddFrom: List<SantaNode<String>>) {
             for (underling in listToAddFrom) {
-                if (res.contains(underling.name).not()) {
-                    res.add(underling.name)
-                }
+                res.add(underling.name)
                 if (underling.getListOfUnderlings().isNotEmpty()) {
-                    underling.getListOfUnderlings().forEach { res.add(it.name) }
                     addUnderlingsToList(underling.getListOfUnderlings())
                 }
             }
@@ -88,6 +85,6 @@ class Tomteland {
         // här är tanken att hitta Gladers underlydande
         //listan fylls på successivt när vi rekurserar
         val list: MutableList<String> = mutableListOf()
-        println(getUnderlings("tomten", list))
+        println(getUnderlings("glader", list))
     }
 }
