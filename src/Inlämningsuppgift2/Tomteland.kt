@@ -60,21 +60,17 @@ class Tomteland {
 
         fun addUnderlingsToList(listToAddFrom: List<SantaNode<String>>) {
             listToAddFrom.forEach { underling -> res.add(underling.name)
-                if (underling.getListOfUnderlings().isNotEmpty()) {
+                if (underling.getListOfUnderlings().isNotEmpty())
                     addUnderlingsToList(underling.getListOfUnderlings())
-                }
             }
         }
 
         fun searchTree(listToSearch: List<SantaNode<String>>) {
             listToSearch.forEach { underling ->
-                if (underling.name.equals(currentName,true)) {
-                    if (underling.getListOfUnderlings().isNotEmpty()) {
-                        addUnderlingsToList(underling.getListOfUnderlings())
-                    }
-                } else {
+                if (underling.name.equals(currentName,true))
+                    addUnderlingsToList(underling.getListOfUnderlings())
+                else
                     searchTree(underling.getListOfUnderlings())
-                }
             }
         }
         searchTree(populateTree())
