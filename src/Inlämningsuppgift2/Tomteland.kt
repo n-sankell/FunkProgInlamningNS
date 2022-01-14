@@ -28,7 +28,7 @@ class Tomteland {
         fun getListOfUnderlings(): List<SantaNode<String>> = underlings
     }
 
-    private fun populateTree(): MutableList<SantaNode<String>> {
+    private fun populateTree(): List<SantaNode<String>> {
         val tomten = SantaNode("Tomten")
         val glader = SantaNode("Glader")
         val butter = SantaNode("Butter")
@@ -51,7 +51,7 @@ class Tomteland {
         skumtomten.addUnderling(dammrattan)
         raven.addUnderling(grasuggan).and(raven.addUnderling(myran))
         myran.addUnderling(bladlusen)
-        return mutableListOf(tomten)
+        return listOf(tomten)
     }
 
     // current namn är den tomte vars underlydande ni vill ta fram
@@ -70,7 +70,7 @@ class Tomteland {
         }
         fun searchTree(listToSearch: List<SantaNode<String>>) {
             for (underling in listToSearch) {
-                if (underling.name == currentName) {
+                if (underling.name.equals(currentName,true)) {
                     if (underling.getListOfUnderlings().isNotEmpty()) {
                         addUnderlingsToList(underling.getListOfUnderlings())
                     }
@@ -88,7 +88,6 @@ class Tomteland {
         // här är tanken att hitta Gladers underlydande
         //listan fylls på successivt när vi rekurserar
         val list: MutableList<String> = mutableListOf()
-        println(getUnderlings("Glader", list))
-
+        println(getUnderlings("tomten", list))
     }
 }
