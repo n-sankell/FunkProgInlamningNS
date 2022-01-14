@@ -57,16 +57,17 @@ class Tomteland {
     // current namn är den tomte vars underlydande ni vill ta fram
     //res är listan som håller alla underlydande
     fun getUnderlings(currentName: String, res: MutableList<String>): MutableList<String> {
+
         fun addUnderlingsToList(listToAddFrom: List<SantaNode<String>>) {
-            for (underling in listToAddFrom) {
-                res.add(underling.name)
+            listToAddFrom.forEach { underling -> res.add(underling.name)
                 if (underling.getListOfUnderlings().isNotEmpty()) {
                     addUnderlingsToList(underling.getListOfUnderlings())
                 }
             }
         }
+
         fun searchTree(listToSearch: List<SantaNode<String>>) {
-            for (underling in listToSearch) {
+            listToSearch.forEach { underling ->
                 if (underling.name.equals(currentName,true)) {
                     if (underling.getListOfUnderlings().isNotEmpty()) {
                         addUnderlingsToList(underling.getListOfUnderlings())
