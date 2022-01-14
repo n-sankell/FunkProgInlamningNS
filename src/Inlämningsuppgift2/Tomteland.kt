@@ -63,7 +63,7 @@ class Tomteland {
 
         fun addUnderlingsToList(nextLevel: List<SantaNode<String>>) {
             for (i in nextLevel) {
-                if (!res.contains(i.name)) {
+                if (res.contains(i.name).not()) {
                     res.add(i.name)
                 }
                 if (i.getList().isNotEmpty()) {
