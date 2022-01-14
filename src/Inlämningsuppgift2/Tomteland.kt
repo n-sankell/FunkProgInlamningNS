@@ -25,7 +25,7 @@ class Tomteland {
     class SantaNode<String>(val name: String) {
         private val underlings: MutableList<SantaNode<String>> = mutableListOf()
         fun addUnderling(underling: SantaNode<String>) = underlings.add(underling)
-        fun getList(): List<SantaNode<String>> {
+        fun getListOfUnderlings(): List<SantaNode<String>> {
             return underlings
         }
     }
@@ -61,26 +61,26 @@ class Tomteland {
     fun getUnderlings(currentName: String, res: MutableList<String>): List<String> {
         val tomten = populateTree()
 
-        fun addUnderlingsToList(nextLevel: List<SantaNode<String>>) {
-            for (i in nextLevel) {
-                if (res.contains(i.name).not()) {
-                    res.add(i.name)
+        fun addUnderlingsToList(listToAddFrom: List<SantaNode<String>>) {
+            for (underling in listToAddFrom) {
+                if (res.contains(underling.name).not()) {
+                    res.add(underling.name)
                 }
-                if (i.getList().isNotEmpty()) {
-                    i.getList().forEach { res.add(it.name) }
-                    addUnderlingsToList(i.getList())
+                if (underling.getListOfUnderlings().isNotEmpty()) {
+                    underling.getListOfUnderlings().forEach { res.add(it.name) }
+                    addUnderlingsToList(underling.getListOfUnderlings())
                 }
             }
         }
 
-        fun searchTree(tomten: List<SantaNode<String>>) {
-            for (i in tomten) {
-                if (i.name == currentName) {
-                    if (i.getList().isNotEmpty()) {
-                        addUnderlingsToList(i.getList())
+        fun searchTree(listToSearch: List<SantaNode<String>>) {
+            for (underling in listToSearch) {
+                if (underling.name == currentName) {
+                    if (underling.getListOfUnderlings().isNotEmpty()) {
+                        addUnderlingsToList(underling.getListOfUnderlings())
                     }
                 } else {
-                    searchTree(i.getList())
+                    searchTree(underling.getListOfUnderlings())
                 }
             }
         }
