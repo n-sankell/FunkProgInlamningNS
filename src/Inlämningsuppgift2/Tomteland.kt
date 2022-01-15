@@ -73,7 +73,13 @@ class Tomteland {
                 }
             }
         }
-        searchTree(populateTree())
+
+        try {
+            searchTree(populateTree())
+        } catch (e: StackOverflowError) {
+            e.printStackTrace()
+            println("Tree appears to be in an infinite loop")
+        }
         return res
     }
 
