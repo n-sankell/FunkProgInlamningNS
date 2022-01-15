@@ -67,10 +67,10 @@ class Tomteland {
 
         fun searchTree(listToSearch: List<SantaNode<String>>) {
             listToSearch.forEach { underling ->
-                if (underling.name.equals(currentName,true))
-                    addUnderlingsToList(underling.getListOfUnderlings())
-                else
-                    searchTree(underling.getListOfUnderlings())
+                when (underling.name.equals(currentName,true)) {
+                    true -> addUnderlingsToList(underling.getListOfUnderlings())
+                    else -> searchTree(underling.getListOfUnderlings())
+                }
             }
         }
         searchTree(populateTree())
